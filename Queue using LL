@@ -1,0 +1,120 @@
+import java.util.Scanner;
+
+class Node {
+	int data;
+	Node next;
+
+	public Node(int data) {
+		this.data = data;
+		this.next = null;
+	}
+}
+
+public class QueueUse {
+
+	private static Scanner s = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		Queue queue = new Queue();
+
+		int q = s.nextInt();
+
+		while (q > 0) {
+			int choice, input;
+			choice = s.nextInt();
+
+			switch(choice) {
+				case 1:
+					input = s.nextInt();
+					queue.enqueue(input);
+					break;
+
+				case 2:
+					System.out.println(queue.dequeue());
+					break;
+
+				case 3:
+					System.out.println(queue.front());
+					break;
+
+				case 4:
+					System.out.println(queue.getSize());
+					break; 
+
+				default: 
+					System.out.println((queue.isEmpty()) ? "true" : "false");
+			}
+
+			q -= 1;
+		}
+
+	}
+public class Queue
+{
+     private int size;
+	private Node first;
+	private Node rear;
+
+	public Queue()
+	{
+	  first = null;
+	   size=0;
+	   rear=null;
+		
+	}
+		public int getSize()
+		 { 
+			 return size;
+		
+          }
+
+    public boolean isEmpty()
+	 { 
+    	if(size==0)
+		return true;
+		else
+		return false;
+    }
+	public void enqueue(int x)
+	{
+		Node n=new Node(x);
+		size++;
+		if (first== null)
+		{
+			first=n;
+			rear=n;
+		}
+		else
+		{
+			rear.next=n;
+			rear=n;
+		}
+	}
+
+	public int dequeue()
+	{
+		if (first == null)
+		{
+			return -1;
+		}
+		else
+		{
+		int temp=first.data;
+		first=first.next;
+		size--;
+		return temp;
+	}
+	}
+	 public int front()
+	{
+		if (first== null)
+		{
+			return -1;
+		}
+		else
+		{
+			return first.data;
+		}
+	}
+
+}
